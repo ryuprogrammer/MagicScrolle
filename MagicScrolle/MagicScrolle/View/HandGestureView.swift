@@ -72,6 +72,18 @@ struct HandGestureView: View {
                                 .font(.largeTitle)
                         }
                     }
+                    .onAppear() {
+                        // 1秒ごとに実行
+                        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {_ in
+                            withAnimation {
+                                // ジェスチャーによって操作jumpToを更新
+                                jumpTo += handGestureViewModel.controlScroll(gesture: handGestureViewModel.currentGesture)
+                                
+                                jumpTo += 1
+                                scrollProxy.scrollTo(jumpTo)
+                            }
+                        }
+                    }
                     // currentGestureが適切に判定されているか確認
                     .onChange(of: handGestureViewModel.currentGesture.rawValue) { currentGesture in
                         withAnimation {

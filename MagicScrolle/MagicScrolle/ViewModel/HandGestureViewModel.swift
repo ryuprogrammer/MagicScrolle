@@ -62,10 +62,11 @@ class HandGestureViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutput
     func controlScroll(gesture: HandGestureDetector.HandGesture) -> Int {
         var scrollNumber = 0
         
-        if gesture == .rock {
-            scrollNumber = -5
-        } else {
-            scrollNumber = 10
+        switch gesture {
+        case .up: scrollNumber = -5
+        case .down: scrollNumber = 5
+        case .ok: scrollNumber = 0
+        case .unknown: scrollNumber = 0
         }
         
         return scrollNumber

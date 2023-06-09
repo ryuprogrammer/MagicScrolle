@@ -18,10 +18,18 @@ protocol HandGestureDetectorDelegate: AnyObject {
 class HandGestureDetector: ObservableObject {
     // ジャンケンの手の種類のenum
     enum HandGesture: String {
-        case rock = "✊"
-        case paper = "✋"
-        case scissors = "✌"
-        case unknown = "？？？"
+        case up = "UP"
+        case down = "Down"
+        case ok = "OK"
+        case unknown = "???"
+    }
+    
+    // ジェスチャー
+    enum Gesture: String {
+        case up = "UP"
+        case down = "Down"
+        case ok = "OK"
+        case unknown = "???"
     }
 
     // デリゲートメソッドに渡す用のHandGestureプロパティ
@@ -80,27 +88,27 @@ class HandGestureDetector: ObservableObject {
         let wristToMiddlePIP = distance(from: wrist, to: middlePIP)
         let wristToRingPIP = distance(from: wrist, to: ringPIP)
         let wristToLittlePIP = distance(from: wrist, to: littlePIP)
-
-        // HandPoseの判定(どの指が曲がっているかでグーチョキパーを判定する）
-        if
-            wristToIndexTip > wristToIndexPIP &&
-                wristToMiddleTip > wristToMiddlePIP &&
-                wristToRingTip > wristToRingPIP &&
-                wristToLittleTip > wristToLittlePIP {
-            // ４本の指が曲がっていないのでぱー
-            currentGesture = .paper
+        
+        // Gestureの判定
+        if wristToIndexTip > wristToIndexPIP &&
+           wristToMiddleTip < wristToMiddlePIP &&
+           wristToRingTip < wristToRingPIP &&
+           wristToLittleTip < wristToLittlePIP &&
+           indexTip.y > wrist.y {
+            currentGesture = .up
         } else if
-            wristToIndexTip < wristToIndexPIP &&
-                wristToMiddleTip < wristToMiddlePIP &&
-                wristToRingTip < wristToRingPIP &&
-                wristToLittleTip < wristToLittlePIP {
-            // ４本の指が曲がっているのでぐー
-            currentGesture = .rock
+           wristToIndexTip > wristToIndexPIP &&
+           wristToMiddleTip < wristToMiddlePIP &&
+           wristToRingTip < wristToRingPIP &&
+           wristToLittleTip < wristToLittlePIP &&
+           indexTip.y < wrist.y {
+            currentGesture = .down
         } else if
-            wristToIndexTip > wristToIndexPIP &&
-                wristToMiddleTip > wristToMiddlePIP {
-            // IndexとMiddleが曲がっていないのでちょき
-            currentGesture = .scissors
+           wristToIndexTip < wristToIndexPIP &&
+           wristToMiddleTip > wristToMiddlePIP &&
+           wristToRingTip > wristToRingPIP &&
+           wristToLittleTip > wristToLittlePIP {
+            currentGesture = .ok
         } else {
             currentGesture = .unknown
         }
