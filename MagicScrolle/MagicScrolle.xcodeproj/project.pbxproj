@@ -12,6 +12,9 @@
 		5A64CC982A3204200050ED84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A64CC972A3204200050ED84 /* Assets.xcassets */; };
 		5A64CC9B2A3204200050ED84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A64CC9A2A3204200050ED84 /* Preview Assets.xcassets */; };
 		5A64CCA52A3205230050ED84 /* HandGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CCA42A3205230050ED84 /* HandGestureDetector.swift */; };
+		5A64CCA72A3206BE0050ED84 /* HandGestureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CCA62A3206BE0050ED84 /* HandGestureViewModel.swift */; };
+		5A64CCA92A3207350050ED84 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CCA82A3207350050ED84 /* CameraView.swift */; };
+		5A64CCAB2A3207A50050ED84 /* HandGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CCAA2A3207A50050ED84 /* HandGestureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		5A64CC972A3204200050ED84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A64CC9A2A3204200050ED84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A64CCA42A3205230050ED84 /* HandGestureDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureDetector.swift; sourceTree = "<group>"; };
+		5A64CCA62A3206BE0050ED84 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
+		5A64CCA82A3207350050ED84 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5A64CCAA2A3207A50050ED84 /* HandGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		5A64CCA22A3204E10050ED84 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5A64CCA62A3206BE0050ED84 /* HandGestureViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -90,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				5A64CC952A32041E0050ED84 /* ContentView.swift */,
+				5A64CCAA2A3207A50050ED84 /* HandGestureView.swift */,
+				5A64CCA82A3207350050ED84 /* CameraView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,8 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A64CC962A32041E0050ED84 /* ContentView.swift in Sources */,
+				5A64CCAB2A3207A50050ED84 /* HandGestureView.swift in Sources */,
 				5A64CC942A32041E0050ED84 /* MagicScrolleApp.swift in Sources */,
 				5A64CCA52A3205230050ED84 /* HandGestureDetector.swift in Sources */,
+				5A64CCA92A3207350050ED84 /* CameraView.swift in Sources */,
+				5A64CCA72A3206BE0050ED84 /* HandGestureViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
