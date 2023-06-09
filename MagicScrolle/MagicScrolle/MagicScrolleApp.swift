@@ -11,7 +11,7 @@ import SwiftUI
 struct MagicScrolleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListView()
         }
     }
 }

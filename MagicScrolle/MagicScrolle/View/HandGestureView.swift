@@ -32,6 +32,9 @@ struct HandGestureView: View {
     // ユーザーのデバイスの画面の大きさ
     private let userScreenWidth: Double = UIScreen.main.bounds.size.width
     private let userScreenHeight: Double = UIScreen.main.bounds.size.height
+    
+    // 指定の位置にジャンプするためのプロパティ
+    @State private var jumpTo = 0
 
     var body: some View {
         GeometryReader { geometry in
@@ -44,6 +47,40 @@ struct HandGestureView: View {
                     .onDisappear {
                         handGestureViewModel.stop()
                     }
+                
+                ScrollViewReader { scrollProxy in // SctollViewProxyインスタンスを取得
+                    VStack {
+                        ScrollView {
+                            VStack {
+                                ForEach(0..<100) {
+                                    Text("\($0) 行目")
+                                        .font(.largeTitle)
+                                        .id($0)
+                                }
+                            }
+                        }
+                        
+                        // 行を移動する
+                        Button {
+                            withAnimation {
+                                jumpTo += 1
+                                scrollProxy.scrollTo(jumpTo)
+                                print(scrollProxy)
+                            }
+                        } label: {
+                            Text("+")
+                                .font(.largeTitle)
+                        }
+                    }
+                    // currentGestureが適切に判定されているか確認
+                    .onChange(of: handGestureViewModel.currentGesture.rawValue) { currentGesture in
+                        withAnimation {
+                            jumpTo += handGestureViewModel.controlScroll(gesture: HandGestureDetector.HandGesture(rawValue: currentGesture) ?? .unknown)
+                            scrollProxy.scrollTo(jumpTo)
+                            backgroundColor = (currentGesture == "？？？" ? .red : .mint)
+                        }
+                    }
+                }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
@@ -62,11 +99,5 @@ struct HandGestureView: View {
                 isEndJanken = true
             }
         })
-        // currentGestureが適切に判定されているか確認
-        .onChange(of: handGestureViewModel.currentGesture.rawValue) { currentGesture in
-            withAnimation {
-                backgroundColor = (currentGesture == "？？？" ? .red : .mint)
-            }
-        }
     }
 }

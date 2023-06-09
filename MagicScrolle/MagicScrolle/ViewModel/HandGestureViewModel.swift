@@ -58,6 +58,18 @@ class HandGestureViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutput
     }
 
     // MARK: - メソッド
+    // スクロールを制御するメソッド
+    func controlScroll(gesture: HandGestureDetector.HandGesture) -> Int {
+        var scrollNumber = 0
+        
+        if gesture == .rock {
+            scrollNumber = -5
+        } else {
+            scrollNumber = 10
+        }
+        
+        return scrollNumber
+    }
 
     // handGestureDetector
     func handGestureDetector(_ handGestureDetector: HandGestureDetector, didRecognize gesture: HandGestureDetector.HandGesture) {

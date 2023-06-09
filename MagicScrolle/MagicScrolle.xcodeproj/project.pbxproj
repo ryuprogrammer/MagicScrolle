@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A64CC942A32041E0050ED84 /* MagicScrolleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CC932A32041E0050ED84 /* MagicScrolleApp.swift */; };
-		5A64CC962A32041E0050ED84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CC952A32041E0050ED84 /* ContentView.swift */; };
+		5A64CC962A32041E0050ED84 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CC952A32041E0050ED84 /* ListView.swift */; };
 		5A64CC982A3204200050ED84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A64CC972A3204200050ED84 /* Assets.xcassets */; };
 		5A64CC9B2A3204200050ED84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A64CC9A2A3204200050ED84 /* Preview Assets.xcassets */; };
 		5A64CCA52A3205230050ED84 /* HandGestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64CCA42A3205230050ED84 /* HandGestureDetector.swift */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		5A64CC902A32041E0050ED84 /* MagicScrolle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicScrolle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A64CC932A32041E0050ED84 /* MagicScrolleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicScrolleApp.swift; sourceTree = "<group>"; };
-		5A64CC952A32041E0050ED84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A64CC952A32041E0050ED84 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		5A64CC972A3204200050ED84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A64CC9A2A3204200050ED84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A64CCA42A3205230050ED84 /* HandGestureDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureDetector.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		5A64CCA32A3204EE0050ED84 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5A64CC952A32041E0050ED84 /* ContentView.swift */,
+				5A64CC952A32041E0050ED84 /* ListView.swift */,
 				5A64CCAA2A3207A50050ED84 /* HandGestureView.swift */,
 				5A64CCA82A3207350050ED84 /* CameraView.swift */,
 			);
@@ -173,7 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A64CC962A32041E0050ED84 /* ContentView.swift in Sources */,
+				5A64CC962A32041E0050ED84 /* ListView.swift in Sources */,
 				5A64CCAB2A3207A50050ED84 /* HandGestureView.swift in Sources */,
 				5A64CC942A32041E0050ED84 /* MagicScrolleApp.swift in Sources */,
 				5A64CCA52A3205230050ED84 /* HandGestureDetector.swift in Sources */,
