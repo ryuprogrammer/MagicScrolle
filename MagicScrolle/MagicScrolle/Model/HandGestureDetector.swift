@@ -94,14 +94,14 @@ class HandGestureDetector: ObservableObject {
            wristToMiddleTip < wristToMiddlePIP &&
            wristToRingTip < wristToRingPIP &&
            wristToLittleTip < wristToLittlePIP &&
-           indexTip.y > wrist.y {
+           indexTip.y > indexPIP.y {
             currentGesture = .up
         } else if
            wristToIndexTip > wristToIndexPIP &&
            wristToMiddleTip < wristToMiddlePIP &&
            wristToRingTip < wristToRingPIP &&
            wristToLittleTip < wristToLittlePIP &&
-           indexTip.y < wrist.y {
+           indexTip.y < indexPIP.y {
             currentGesture = .down
         } else if
            wristToIndexTip < wristToIndexPIP &&

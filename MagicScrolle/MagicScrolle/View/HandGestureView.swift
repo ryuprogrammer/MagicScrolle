@@ -79,37 +79,15 @@ struct HandGestureView: View {
                                 // ジェスチャーによって操作jumpToを更新
                                 jumpTo += handGestureViewModel.controlScroll(gesture: handGestureViewModel.currentGesture)
                                 
-                                jumpTo += 1
                                 scrollProxy.scrollTo(jumpTo)
+                                
+                                print(handGestureViewModel.currentGesture.rawValue)
                             }
-                        }
-                    }
-                    // currentGestureが適切に判定されているか確認
-                    .onChange(of: handGestureViewModel.currentGesture.rawValue) { currentGesture in
-                        withAnimation {
-                            jumpTo += handGestureViewModel.controlScroll(gesture: HandGestureDetector.HandGesture(rawValue: currentGesture) ?? .unknown)
-                            scrollProxy.scrollTo(jumpTo)
-                            backgroundColor = (currentGesture == "？？？" ? .red : .mint)
                         }
                     }
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
-        .onReceive(handGestureViewModel.jankenCallTimer, perform: { _ in
-            jankenCount += 1
-            let jankenFinishTime: Int = 25
-
-            if jankenCount >= jankenFinishTime {
-                // カメラを止める
-                handGestureViewModel.stop()
-
-                if let _ = finalResult {
-                    isShowResultView = true
-                }
-                // １回のジャンケンを終了
-                isEndJanken = true
-            }
-        })
     }
 }

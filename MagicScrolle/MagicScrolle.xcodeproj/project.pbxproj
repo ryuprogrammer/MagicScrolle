@@ -27,6 +27,7 @@
 		5A64CCA62A3206BE0050ED84 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
 		5A64CCA82A3207350050ED84 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5A64CCAA2A3207A50050ED84 /* HandGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureView.swift; sourceTree = "<group>"; };
+		5A6832822A34A39100548954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		5A64CC922A32041E0050ED84 /* MagicScrolle */ = {
 			isa = PBXGroup;
 			children = (
+				5A6832822A34A39100548954 /* Info.plist */,
 				5A64CC932A32041E0050ED84 /* MagicScrolleApp.swift */,
 				5A64CCA32A3204EE0050ED84 /* View */,
 				5A64CCA22A3204E10050ED84 /* ViewModel */,
@@ -310,6 +312,8 @@
 				DEVELOPMENT_TEAM = 254E5TZV4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MagicScrolle/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ジェスチャーでスマホを操作するためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +343,8 @@
 				DEVELOPMENT_TEAM = 254E5TZV4C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MagicScrolle/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ジェスチャーでスマホを操作するためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

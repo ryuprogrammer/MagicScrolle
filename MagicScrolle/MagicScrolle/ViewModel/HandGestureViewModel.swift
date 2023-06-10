@@ -63,8 +63,8 @@ class HandGestureViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutput
         var scrollNumber = 0
         
         switch gesture {
-        case .up: scrollNumber = -5
-        case .down: scrollNumber = 5
+        case .up: scrollNumber = -1
+        case .down: scrollNumber = 1
         case .ok: scrollNumber = 0
         case .unknown: scrollNumber = 0
         }
