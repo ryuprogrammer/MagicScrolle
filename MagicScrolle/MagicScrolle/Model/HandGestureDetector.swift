@@ -96,10 +96,11 @@ class HandGestureDetector: ObservableObject {
             // ぐーでDown
             currentGesture = .down
         } else if
-           wristToIndexTip < wristToIndexPIP &&
+           wristToIndexTip > wristToIndexPIP &&
            wristToMiddleTip > wristToMiddlePIP &&
-           wristToRingTip > wristToRingPIP &&
-           wristToLittleTip > wristToLittlePIP {
+           wristToRingTip < wristToRingPIP &&
+           wristToLittleTip < wristToLittlePIP {
+            // チョキでOK
             currentGesture = .ok
         } else {
             currentGesture = .unknown

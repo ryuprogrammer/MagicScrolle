@@ -12,33 +12,17 @@ struct HandGestureView: View {
     // MARK: - インスタンス生成
     // HandGestureViewModelのインスタンス生成
     @StateObject private var handGestureViewModel = HandGestureViewModel()
-    // MARK: - ゲーム関連
-    // ジャンケンのカウントダウン用プロパティ
-    @State private var jankenCount: Int = 0
-    // ゲームの勝敗を格納
-    @State private var finalResult: String?
-    // 勝率を格納
-    @State private var showWinRate: Int?
-    // １回のジャンケンの終了判定
-    @State private var isEndJanken: Bool = false
     // MARK: - 画面遷移
-    // 環境変数を利用して画面を戻る
-    @Environment(\.dismiss) private var dissmiss
-    // ResultViewの表示有無
-    @State private var isShowResultView: Bool = false
-    // MARK: - 画面、背景
-    // Viewの背景色のプロパティ（ジャンケンの手が有効の時青、無効の時赤に変化）
-    @State private var backgroundColor = Color.red
-    // ユーザーのデバイスの画面の大きさ
-    private let userScreenWidth: Double = UIScreen.main.bounds.size.width
-    private let userScreenHeight: Double = UIScreen.main.bounds.size.height
+    @State private var toSecondView = false
+    @State private var selection: Int?
     
     // 指定の位置にジャンプするためのプロパティ
     @State private var jumpTo = 0
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                // カメラ映像を表示
                 CameraView(camera: handGestureViewModel)
                     .ignoresSafeArea(.all)
                     .onAppear {
@@ -48,8 +32,8 @@ struct HandGestureView: View {
                         handGestureViewModel.stop()
                     }
                 
-                ScrollViewReader { scrollProxy in // SctollViewProxyインスタンスを取得
-                    VStack {
+                NavigationStack {
+                    ScrollViewReader { scrollProxy in // SctollViewProxyインスタンスを取得
                         ScrollView {
                             VStack {
                                 ForEach(0..<100) {
@@ -62,33 +46,31 @@ struct HandGestureView: View {
                                 }
                             }
                         }
-                        
-                        // 行を移動する
-                        Button {
-                            withAnimation {
-                                jumpTo += 1
-                                scrollProxy.scrollTo(jumpTo)
-                                print(scrollProxy)
-                            }
-                        } label: {
-                            Text("+")
-                                .font(.largeTitle)
-                        }
-                    }
-                    .onAppear() {
-                        // 1秒ごとに実行
-                        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) {_ in
-                            withAnimation {
-                                // ジェスチャーによって操作jumpToを更新
-                                jumpTo += handGestureViewModel.controlScroll(jumpTo: jumpTo, gesture: handGestureViewModel.currentGesture)
-                                
-                                scrollProxy.scrollTo(jumpTo)
-                                
-                                print(jumpTo)
-                                print(handGestureViewModel.currentGesture.rawValue)
+                        .onAppear() {
+                            // 1秒ごとに実行
+                            Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) {_ in
+                                withAnimation {
+                                    // ジェスチャーによって操作jumpToを更新
+                                    jumpTo += handGestureViewModel.controlScroll(jumpTo: jumpTo, gesture: handGestureViewModel.currentGesture)
+                                    
+                                    scrollProxy.scrollTo(jumpTo)
+                                    
+                                    // OKの時画面遷移
+                                    if handGestureViewModel.currentGesture == .ok {
+                                        selection = jumpTo
+                                        toSecondView = true
+                                    }
+                                    
+                                    print(jumpTo)
+                                    print(handGestureViewModel.currentGesture.rawValue)
+                                }
                             }
                         }
                     }
+                    .navigationDestination(isPresented: $toSecondView, destination: {
+                        Text("レシピ画面")
+                    })
+                    .navigationTitle("MagicScroll")
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
