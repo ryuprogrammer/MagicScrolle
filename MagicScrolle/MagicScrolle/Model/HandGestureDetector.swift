@@ -23,14 +23,6 @@ class HandGestureDetector: ObservableObject {
         case ok = "OK"
         case unknown = "???"
     }
-    
-    // ジェスチャー
-    enum Gesture: String {
-        case up = "UP"
-        case down = "Down"
-        case ok = "OK"
-        case unknown = "???"
-    }
 
     // デリゲートメソッドに渡す用のHandGestureプロパティ
     var currentGesture: HandGesture = .unknown {
@@ -91,17 +83,17 @@ class HandGestureDetector: ObservableObject {
         
         // Gestureの判定
         if wristToIndexTip > wristToIndexPIP &&
-           wristToMiddleTip < wristToMiddlePIP &&
-           wristToRingTip < wristToRingPIP &&
-           wristToLittleTip < wristToLittlePIP &&
-           indexTip.y > indexPIP.y {
+           wristToMiddleTip > wristToMiddlePIP &&
+           wristToRingTip > wristToRingPIP &&
+           wristToLittleTip > wristToLittlePIP {
+            // パーでUP
             currentGesture = .up
         } else if
-           wristToIndexTip > wristToIndexPIP &&
+           wristToIndexTip < wristToIndexPIP &&
            wristToMiddleTip < wristToMiddlePIP &&
            wristToRingTip < wristToRingPIP &&
-           wristToLittleTip < wristToLittlePIP &&
-           indexTip.y < indexPIP.y {
+           wristToLittleTip < wristToLittlePIP {
+            // ぐーでDown
             currentGesture = .down
         } else if
            wristToIndexTip < wristToIndexPIP &&

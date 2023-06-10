@@ -55,6 +55,9 @@ struct HandGestureView: View {
                                 ForEach(0..<100) {
                                     Text("\($0) 行目")
                                         .font(.largeTitle)
+                                        .frame(width: 400, height: 200)
+                                        .background($0 == jumpTo ? Color.cyan.opacity(0.8) : Color.cyan.opacity(0.4))
+                                        .cornerRadius(15)
                                         .id($0)
                                 }
                             }
@@ -74,13 +77,14 @@ struct HandGestureView: View {
                     }
                     .onAppear() {
                         // 1秒ごとに実行
-                        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) {_ in
+                        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) {_ in
                             withAnimation {
                                 // ジェスチャーによって操作jumpToを更新
-                                jumpTo += handGestureViewModel.controlScroll(gesture: handGestureViewModel.currentGesture)
+                                jumpTo += handGestureViewModel.controlScroll(jumpTo: jumpTo, gesture: handGestureViewModel.currentGesture)
                                 
                                 scrollProxy.scrollTo(jumpTo)
                                 
+                                print(jumpTo)
                                 print(handGestureViewModel.currentGesture.rawValue)
                             }
                         }
