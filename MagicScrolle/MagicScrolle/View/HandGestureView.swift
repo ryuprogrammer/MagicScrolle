@@ -37,7 +37,7 @@ struct HandGestureView: View {
                         ScrollView {
                             VStack {
                                 ForEach(0..<100) {
-                                    Text("\($0) 行目")
+                                    Text("\($0) 番のレシピ")
                                         .font(.largeTitle)
                                         .frame(width: 400, height: 200)
                                         .background($0 == jumpTo ? Color.cyan.opacity(0.8) : Color.cyan.opacity(0.4))
@@ -70,7 +70,7 @@ struct HandGestureView: View {
                     .navigationDestination(isPresented: $toSecondView, destination: {
                         Text("レシピ画面")
                     })
-                    .navigationTitle("MagicScroll")
+                    .navigationTitle("MagicScroll \(handGestureViewModel.currentGesture.rawValue)")
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)

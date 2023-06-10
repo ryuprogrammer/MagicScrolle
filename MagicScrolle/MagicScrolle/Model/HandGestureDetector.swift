@@ -20,8 +20,8 @@ class HandGestureDetector: ObservableObject {
     enum HandGesture: String {
         case up = "UP"
         case down = "Down"
-        case ok = "OK"
-        case unknown = "???"
+        case ok = "OK!"
+        case unknown = "STOP!"
     }
 
     // デリゲートメソッドに渡す用のHandGestureプロパティ
