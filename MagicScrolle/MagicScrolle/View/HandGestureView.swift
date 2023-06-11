@@ -47,7 +47,7 @@ struct HandGestureView: View {
                             }
                         }
                         .onAppear() {
-                            // 1秒ごとに実行
+                            // 0.4秒ごとに実行
                             Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) {_ in
                                 withAnimation {
                                     // ジェスチャーによって操作jumpToを更新
@@ -67,6 +67,7 @@ struct HandGestureView: View {
                             }
                         }
                     }
+                    // 画面遷移
                     .navigationDestination(isPresented: $toSecondView, destination: {
                         Text("レシピ画面")
                     })
